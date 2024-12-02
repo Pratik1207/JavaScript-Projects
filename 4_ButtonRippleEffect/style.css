@@ -1,0 +1,47 @@
+/* Set basic styles for the body */
+body {
+    margin: 0; /* Remove default margin */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    height: 100vh; /* Set the height to fill the viewport */
+    align-items: center; /* Center content vertically */
+    background-color: aliceblue; /* Light blue background */
+    font-family: sans-serif; /* Use a clean sans-serif font */
+}
+
+/* Style for the button */
+.btn {
+    background-color: pink; /* Set button background color */
+    padding: 20px 40px; /* Add padding around the button text */
+    border-radius: 5px; /* Round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    color: black; /* Set text color */
+    position: relative; /* Needed for positioning pseudo-elements */
+    overflow: hidden; /* Ensure expanding pseudo-elements stay within the button */
+}
+
+/* Style for the text inside the button */
+.btn span {
+    position: relative; /* Keep the text above the pseudo-element */
+    z-index: 1; /* Ensure the text is on top */
+}
+
+/* Initial state for the pseudo-element (::before) */
+.btn::before {
+    content: ""; /* Create an empty pseudo-element */
+    position: absolute; /* Position it relative to the button */
+    background-color: orangered; /* Set background color */
+    width: 0; /* Start with zero width */
+    height: 0; /* Start with zero height */
+    left: var(--xPos); /* Use the custom property for the horizontal position */
+    top: var(--yPos); /* Use the custom property for the vertical position */
+    transform: translate(-50%, -50%); /* Center the pseudo-element */
+    border-radius: 50%; /* Make it circular */
+    transition: width 0.5s, height 0.5s; /* Smooth transition for size changes */
+}
+
+/* Style for the pseudo-element during hover */
+.btn:hover::before {
+    width: 300px; /* Expand the width */
+    height: 300px; /* Expand the height */
+}
